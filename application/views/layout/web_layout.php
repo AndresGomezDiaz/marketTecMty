@@ -36,7 +36,7 @@
     <div id="wrapper" class="clearfix">
         <!-- Header
         ============================================= -->
-        <header id="header" class="full-header">
+        <header id="header" class="full-header sticky">
             <div id="header-wrap">
                 <div class="container clearfix">
                     <div id="primary-menu-trigger" style="color:#fff; padding-left: 10px;"><i class="icon-reorder icon-2x"></i></div>

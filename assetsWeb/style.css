@@ -986,7 +986,7 @@ html[xmlns] .slider-wrap {display: block;}
 
 body.stretched #header.full-header .container {
 	width: 100%;
-	padding: 0 30px;
+	padding: 0 30px 0 0;
 }
 
 #header.transparent-header.full-header #header-wrap { border-bottom: 1px solid rgba(0,0,0,0.1); }
@@ -2014,6 +2014,14 @@ body:not(.device-sm):not(.device-xs):not(.device-xxs) #header.transparent-header
 	transition: margin .4s ease, opacity .3s ease;
 }
 
+div#top-cart{
+	margin-right: 2rem;
+}
+
+div#top-search > a#top-search-trigger{
+	margin-right: 2rem;
+}
+
 body:not(.top-search-open) #header-wrap #logo,
 body:not(.top-search-open) #primary-menu > ul,
 body:not(.top-search-open) #primary-menu > .container > ul,
@@ -2054,11 +2062,11 @@ body.top-search-open #top-account { opacity: 0; }
 
 #header.sticky-header:not(.static-sticky),
 #header.sticky-header:not(.static-sticky) #header-wrap,
-#header.sticky-header:not(.static-sticky):not(.sticky-style-2):not(.sticky-style-3) #logo img { height: 60px; }
+#header.sticky-header:not(.static-sticky):not(.sticky-style-2):not(.sticky-style-3) #logo img { height: 100px; }
 
 #header.sticky-header:not(.static-sticky) #primary-menu > ul > li > a {
-	padding-top: 19px;
-	padding-bottom: 19px;
+	padding-top: 39px;
+	padding-bottom: 15px;
 }
 
 #header.sticky-header:not(.static-sticky).sticky-style-2,
@@ -2066,13 +2074,6 @@ body.top-search-open #top-account { opacity: 0; }
 
 #header.sticky-header:not(.static-sticky).sticky-style-2 #primary-menu,
 #header.sticky-header:not(.static-sticky).sticky-style-3 #primary-menu { border-top: 0; }
-
-#header.sticky-header:not(.static-sticky) #top-search,
-#header.sticky-header:not(.static-sticky) #top-cart,
-#header.sticky-header:not(.static-sticky) #side-panel-trigger {
-	margin-top: 20px !important;
-	margin-bottom: 20px !important;
-}
 
 #header.sticky-header:not(.static-sticky) #top-account {
 	margin-top: 12px !important;
@@ -2439,7 +2440,7 @@ body:not(.device-touch) #page-menu nav li a {
 .side-header #primary-menu:not(.nobottomborder):after {
 	display: block;
 	content: '';
-	width: 20%;
+	width: 100%;
 	border-bottom: 1px solid #E5E5E5;
 }
 
@@ -13623,4 +13624,5 @@ body:not(.no-transition) #wrapper,
 	margin:0!important;
 	padding:0!important
 }
+
 

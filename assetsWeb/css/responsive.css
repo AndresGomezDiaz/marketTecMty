@@ -242,7 +242,9 @@
 
 
 @media (max-width: 991px) {
-
+	i.icon-shopping-cart, i.icon-search3{
+		color: white;
+	}
 	#wrapper {
 		width: 100%;
 		margin: 0;
