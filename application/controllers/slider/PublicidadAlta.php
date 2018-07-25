@@ -23,6 +23,7 @@ class PublicidadAlta extends CI_Controller {
 					"nomToken"		=> $this->security->get_csrf_token_name(),
 					"valueToken"	=> $this->security->get_csrf_hash(),
 					"liga"			=> empty(set_value('liga')) ? "" : set_value('liga'),
+					"texto"			=> empty(set_value('texto')) ? "" : set_value('texto'),
 					"imagen"		=> ""
 					);
 
@@ -45,6 +46,7 @@ class PublicidadAlta extends CI_Controller {
 						"nomToken"		=> $this->security->get_csrf_token_name(),
 						"valueToken"	=> $this->security->get_csrf_hash(),
 						"liga"			=> empty(set_value('liga')) ? $row->liga : set_value('liga'),
+						"texto"			=> empty(set_value('texto')) ? $row->texto : set_value('texto'),
 						"imagen"		=> $row->imagen,
 						"registro"		=> $registro
 						);

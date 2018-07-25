@@ -30,7 +30,7 @@ if(isset($registro)){ $ligaUrl = base_url().'producto/ProductoAlta/guardarProduc
 							<select name="categoria" id="categoria"  class="span11 m-wrap">
 								<option value="">Seleccione</option>
 								<?php foreach($categorias->result() as $infoCat): ?>
-									<option value="<?=$infoCat->id_categoria?>" <?=empty($categoria) ? "" : "selected"?> ><?=$infoCat->nombre?></option>
+									<option value="<?=$infoCat->id_categoria?>" <?=($categoria == $infoCat->id_categoria) ? "selected" : ""?> ><?=$infoCat->nombre?></option>
 								<?php endforeach; ?>
 							</select>
 							<?php echo form_error('categoria'); ?>
@@ -50,38 +50,16 @@ if(isset($registro)){ $ligaUrl = base_url().'producto/ProductoAlta/guardarProduc
 							<?php echo form_error('descripcion'); ?>
 						</div>
 					</div>
-					<div class="control-group">
-						<label class="control-label">Colores:</label>
+					<div class="control-group <?=empty(form_error('color')) ? "" : "error"?>">
+						<label class="control-label">Color:</label>
 						<div class="controls">
-							<label>
-							<div class="checker" id="uniform-undefined">
-								<div class="span6">
-								<table id="tablaColores" class="table table-bordered with-check">
-									<thead>
-									<tr>
-										<th>Seleccionar</th>
-										<th>Color</th>
-									</tr>
-									</thead>
-									<tbody id="coloresLista">
-										<?php foreach($colores->result() as $infoColor): ?>
-											<tr>
-												<td style="text-align: center;"><input onclick="desactivaVariosColores()" id="color" type="checkbox" <?=in_array($infoColor->id_color, $colores_prod) ? 'checked="checked"' : ""?> name="color[]" class="colorSelect" value="<?=$infoColor->id_color?>"></td>
-												<td><i style="background-color:#<?=$infoColor->clave?>;  color: #<?=$infoColor->clave?>; <?=($infoColor->borde == 1) ? "border: solid #666666 1px;" : ""?>" class="icon-th"></i> &nbsp;&nbsp;&nbsp; <?=$infoColor->nombre?></td>
-											</tr>
-										<?php endforeach; ?>
-										<tr>
-											<td style="text-align: center;"><input type="checkbox" <?=(in_array(0, $colores_prod)) ? 'checked="checked"' : ""?> id="varios_colores" name="varios_colores" value="1" onclick="desactivaCasillas()"></td>
-											<td>Varios colores</td>
-										</tr>
-									</tbody>
-								</table>
-								</div>
-								<div class=" help-block span5" style="text-align: justify;">
-									*Nota: Si se indica un color al hacer una entrada de producto se solicitará un registro de entrada por color, en caso de solo requerir indicar que el producto se encuentra en varios colores, se puede especificar en la descripción o bien, seleccionando la casilla "Varios colores"
-								</div>
-							</div>
-							</label>
+							<select name="color" id="color" class="span11 m-wrap">
+								<option value="0">Varios colores</option>
+								<?php foreach($colores->result() as $infoColor): ?>
+									<option value="<?=$infoColor->id_color?>" <?=($color == $infoColor->id_color) ? "selected" : ""?> ><?=$infoColor->nombre?></option>
+								<?php endforeach; ?>
+							</select>
+							<?php echo form_error('color'); ?>
 						</div>
 					</div>
 					<?php if(isset($imagen)){ ?>
@@ -89,6 +67,7 @@ if(isset($registro)){ $ligaUrl = base_url().'producto/ProductoAlta/guardarProduc
 						<label class="control-label">Imagen: <a title="Eliminar" href="<?=base_url().'elimina_imagen_producto/'.$registro?>"><i class="icon-trash icon-2x"></i></a></label>
 						<div class="controls">
 							<img src="<?=base_url().'assets/img/producto/'.$imagen?>" width="100%" class="span5 m-wrap">
+							<span class="help-inline">La imagen tiene que ser en un tamaño mínimo de 782 * 800 pixeles optimizada para web</span>
 						</div>
 					</div>
 					<?php }else{ ?>
@@ -96,6 +75,7 @@ if(isset($registro)){ $ligaUrl = base_url().'producto/ProductoAlta/guardarProduc
 						<label class="control-label">Imagen:</label>
 						<div class="controls">
 							<input type="file" name="archivo" id="archivo">
+							<span class="help-inline">La imagen tiene que ser en un tamaño mínimo de 782 * 800 pixeles optimizada para web</span>
 						</div>
 					</div>
 					<?php } ?>

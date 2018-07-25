@@ -7,12 +7,16 @@ class Producto extends CI_Controller {
         parent::__construct();
         $this->load->library(array('form_validation'));
 		$this->load->helper('form');
+		$this->load->model('Producto_model');
     }
 
 	public function index(){
+		$productos = $this->Producto_model->infoProducto();
+
 		$data = array(
 						"nomToken"		=> $this->security->get_csrf_token_name(),
-						"valueToken"	=> $this->security->get_csrf_hash()
+						"valueToken"	=> $this->security->get_csrf_hash(),
+						"productos"		=> $productos
 					);
 
 		$this->template->add_js();

@@ -7,12 +7,15 @@ class Categoria extends CI_Controller {
         parent::__construct();
         $this->load->library(array('form_validation'));
 		$this->load->helper('form');
+		$this->load->model('Categoria_model');
     }
 
 	public function index(){
+		$categorias = $this->Categoria_model->infoCategoria();
 		$data = array(
 						"nomToken"		=> $this->security->get_csrf_token_name(),
-						"valueToken"	=> $this->security->get_csrf_hash()
+						"valueToken"	=> $this->security->get_csrf_hash(),
+						"categorias"	=> $categorias
 					);
 
 		$this->template->add_js();

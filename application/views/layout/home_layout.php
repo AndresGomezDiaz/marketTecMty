@@ -70,21 +70,21 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo" style="background-color: #004892;">
-                        <a href="index.html" class="standard-logo" data-dark-logo="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_1.png"><img src="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_2.png" alt="Canvas Logo"></a>
-                        <a href="index.html" class="retina-logo" data-dark-logo="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_1.png"><img src="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_2.png" alt="Canvas Logo"></a>
+                        <a href="<?=base_url()?>" class="standard-logo" data-dark-logo="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_2.png"><img src="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_2.png" alt="Canvas Logo"></a>
+                        <a href="<?=base_url()?>" class="retina-logo" data-dark-logo="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_2.png"><img src="<?=base_url().'assetsWeb/'?>images/tecMty/logo_tec_2.png" alt="Canvas Logo"></a>
                     </div><!-- #logo end -->
                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
                         <ul>
                             <li><a href="<?=base_url()?>">Home</a></li>
-                            <li><a href="<?=base_url().'web_categorias'?>">Causas</a></li>
+                            <?php /*<li><a href="<?=base_url().'web_categorias'?>">Causas</a></li> */ ?>
                             <li><a href="<?=base_url().'web_productos'?>">Productos</a></li>
                         </ul>
                         <!-- Top Cart
                         ============================================= -->
                         <div id="top-cart">
-                            <a href="<?=base_url().'web_carrito'?>" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
+                            <a href="<?=base_url().'web_carrito'?>"><i class="icon-shopping-cart"></i><span>5</span></a>
                             <!-- <div class="top-cart-content">
                                 <div class="top-cart-title">
                                     <h4>Shopping Cart</h4>
@@ -203,7 +203,7 @@
                 delay:9000,
                 navigation: {},
                 responsiveLevels:[1200,992,768,480,320],
-                gridwidth:1140,
+                gridwidth:1700,
                 gridheight:500,
                 lazyType:"none",
                 shadow:0,

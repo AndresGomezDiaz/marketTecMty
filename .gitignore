@@ -1,5 +1,10 @@
 .DS_Store
 
+sftp-config.json
+application/config/config.php
+application/config/database.php
+unser_guide/*
+
 application/cache/*
 !application/cache/index.html
 

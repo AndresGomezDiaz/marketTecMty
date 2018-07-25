@@ -28,7 +28,7 @@ class ProductoAlta extends CI_Controller {
 					"categoria"			=> empty(set_value('categoria')) ? "" : set_value('categoria'),
 					"descripcion"		=> empty(set_value('descripcion')) ? "" : set_value('descripcion'),
 					"precio"			=> empty(set_value('precio')) ? "" : set_value('precio'),
-					"colores_prod"		=> array()
+					"color"				=> empty(set_value('color')) ? "" : set_value('color')
 					);
 
 		$this->template->add_css();
@@ -57,9 +57,9 @@ class ProductoAlta extends CI_Controller {
 					"categoria"			=> empty(set_value('categoria')) ? $row->categoria : set_value('categoria'),
 					"descripcion"		=> empty(set_value('descripcion')) ? $row->descripcion : set_value('descripcion'),
 					"precio"			=> empty(set_value('precio')) ? $row->precio : set_value('precio'),
+					"color"				=> empty(set_value('color')) ? $row->id_color : set_value('color'),
 					"imagen"			=> $row->imagen,
 					"registro"			=> $registro,
-					"colores_prod"		=> ($row->colores == "") ? array() : explode(",",$row->colores),
 					"colores"			=> $colores
 					);
 
@@ -119,7 +119,7 @@ class ProductoAlta extends CI_Controller {
 		}
 		if(isset($registro)){
 			$data = array("imagen" => "");
-			$this->Producto_model->editaProducto($registro,$data);
+			$this->Producto_model->editaProducto($registro);
 			redirect(base_url().'editar_producto/'.$registro);
 		}else{
 			redirect(base_url().'productos');
@@ -138,8 +138,10 @@ class ProductoAlta extends CI_Controller {
         $this->form_validation->set_rules('precio', 'precio del producto', 'required|numeric');
         if(isset($registro)){
         	$datoProducto = $this->Producto_model->detalleProducto($registro);
-        	$infoProducto = $detalleProducto->row(0);
-        	if()
+        	$infoProducto = $datoProducto->row(0);
+    		if($infoProducto->clave != $this->input->post('clave')){
+    			$this->form_validation->set_rules('clave','clave del producto','callback_valida_clave');
+    		}
         }else{
         	$this->form_validation->set_rules('clave','clave del producto','callback_valida_clave');
         }
@@ -156,17 +158,6 @@ class ProductoAlta extends CI_Controller {
         		$this->index();
         	}
 		}else{
-
-			if(count($this->input->post('color')) == 0 ){
-				if($this->input->post('varios_colores') == 1){
-					$colorGuarda = '0';
-				}else{
-					$colorGuarda = "";
-				}
-			}else{
-				$colorGuarda = implode(',', $this->input->post('color'));
-			}
-
 			//creamos arreglo para guardar registro:
 			$data = array(
 							"nombre" 		=> $this->input->post("nombre"),
@@ -174,7 +165,7 @@ class ProductoAlta extends CI_Controller {
 							"id_categoria"	=> $this->input->post('categoria'),
 							"precio"		=> $this->input->post('precio'),
 							"descripcion" 	=> $this->input->post("descripcion"),
-							"colores"		=> $colorGuarda
+							"id_color"		=> $this->input->post('color')
 						);
 			//subimos el archivo:
 			if($_FILES['archivo']['name'] && $_FILES['archivo']['type']){

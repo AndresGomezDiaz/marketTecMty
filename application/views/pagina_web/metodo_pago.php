@@ -2,12 +2,33 @@
 <div class="content-wrap">
 	<div class="container clearfix">
 		<!-- Aqui inicia contenido -->
+		<form id="billing-form" name="billing-form" class="nobottommargin" action="#" method="post">
+		<div class="row clearfix">
+			<h3 class="">¿A que causa quieres donar?</h3>
+			<div class="col-md-6">
+				<div class="col_full">
+					<label for="shipping-form-name">Causa:</label>
+					<select class="selectpicker sm-form-control">
+						<option>Lideres del mañana</option>
+						<option>Red de filantropía</option>
+						<option>Becas de talento académico</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="col_full">
+					<label for="shipping-form-lname">Campus al que dirige su donativo:</label>
+					<select class="selectpicker sm-form-control">
+						<option>Chihuahua</option>
+						<option>Laguna</option>
+						<option>Monterrey</option>
+					</select>
+				</div>
+			</div>
+		</div>
 		<div class="row clearfix">
 			<div class="col-md-6">
 				<h3>Selecciona el método depago</h3>
-
-				<form id="billing-form" name="billing-form" class="nobottommargin" action="#" method="post">
-
 					<div class="col_full">
 						<label for="billing-form-name">Tipo de tarjeta:</label>
 						<select class="selectpicker sm-form-control">
@@ -71,13 +92,9 @@
 					</div>
 
 					<div class="clear"></div>
-				</form>
 			</div>
 			<div class="col-md-6">
 				<h3 class="">Datos de contacto</h3>
-
-				<form id="shipping-form" name="shipping-form" class="nobottommargin" action="#" method="post">
-
 					<div class="col_half">
 						<label for="shipping-form-name">Nombre(s):</label>
 						<input type="text" id="shipping-form-name" name="shipping-form-name" value="" class="sm-form-control" />
@@ -122,18 +139,17 @@
 
 					<div class="col_half">
 						<label for="shipping-form-name">Total a pagar:</label>
-						<input type="text" id="shipping-form-lname" name="shipping-form-lname" value="85.00"  readonly="readonly" class="sm-form-control" />
+						<input type="text" id="shipping-form-lname" name="shipping-form-lname" value="50.00"  readonly="readonly" class="sm-form-control" />
 					</div>
 
 					<div class="col_half col_last">
 						<br />
-						<a href="#" class="button button-3d fright">Pagar</a>
+						<a href="<?=base_url()?>" class="button button-3d fright">Pagar</a>
 					</div>
 
-				</form>
 			</div>
-
 		</div>
+		</form>
 	</div>
 </div>
 </section>

@@ -10,6 +10,13 @@ if(isset($registro)){ $ligaUrl = base_url().'slider/PublicidadAlta/guardarPublic
 			</div>
 			<div class="widget-content nopadding">
 				<?=form_open_multipart($ligaUrl,$attributes)?>
+					<div class="control-group <?=empty(form_error('texto')) ? "" : "error"?>">
+						<label class="control-label">Texto:</label>
+						<div class="controls">
+							<input type="text" maxlength="200" name="texto" id="texto" class="span11 m-wrap" value="<?=$texto?>">
+							<?php echo form_error('texto'); ?>
+						</div>
+					</div>
 					<div class="control-group <?=empty(form_error('liga')) ? "" : "error"?>">
 						<label class="control-label">Liga:</label>
 						<div class="controls">
@@ -22,7 +29,7 @@ if(isset($registro)){ $ligaUrl = base_url().'slider/PublicidadAlta/guardarPublic
 						<label class="control-label">Imagen: <a title="Eliminar" href="<?=base_url().'elimina_imagen_equipo/'.$registro?>"><i class="icon-trash icon-2x"></i></a></label>
 						<div class="controls">
 							<img src="<?=base_url().'assets/img/publicidad/'.$imagen?>" width="100%" class="span5 m-wrap">
-							<span class="help-inline">La imagen tiene que ser en un tamaño mínimo de 400 * 300 pixeles optimizada para web</span>
+							<span class="help-inline">La imagen tiene que ser en un tamaño mínimo de 1700 * 500 pixeles optimizada para web</span>
 						</div>
 					</div>
 					<?php }else{ ?>
@@ -30,7 +37,7 @@ if(isset($registro)){ $ligaUrl = base_url().'slider/PublicidadAlta/guardarPublic
 						<label class="control-label">Imagen:</label>
 						<div class="controls">
 							<input type="file" name="archivo" id="archivo" class="span11 m-wrap" required="required" value="<?=$imagen?>">
-							<span class="help-inline">La imagen tiene que ser en un tamaño mínimo de 400 * 300 pixeles optimizada para web</span>
+							<span class="help-inline">La imagen tiene que ser en un tamaño mínimo de 1700 * 500 pixeles optimizada para web</span>
 						</div>
 					</div>
 					<?php } ?>

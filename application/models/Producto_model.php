@@ -10,7 +10,7 @@ class Producto_model extends CI_Model {
 		if(isset($filtro)){
 			$this->db->where($filtro);
 		}
-		$this->db->select('a.id_producto, a.nombre, b.nombre AS categoria, b.id_categoria, a.precio, a.unidad, a.imagen, a.descripcion, a.estatus, a.colores');
+		$this->db->select('a.id_producto, a.nombre, b.nombre AS categoria, b.id_categoria, a.precio, a.unidad, a.imagen, a.descripcion, a.estatus, a.id_color, a.clave');
 		$this->db->from('producto a');
 		$this->db->join('categoria b', 'a.id_categoria = b.id_categoria', 'INNER');
 		$query = $this->db->get();
@@ -21,7 +21,7 @@ class Producto_model extends CI_Model {
 		if(isset($id)){
 			$this->db->where('a.id_producto', $id);
 		}
-		$this->db->select('a.id_producto, a.nombre AS producto, b.nombre AS categoria, a.precio, a.unidad, a.imagen, a.precio, a.unidad, a.id_categoria, a.colores');
+		$this->db->select('a.id_producto, a.nombre AS producto, b.nombre AS categoria, a.precio, a.unidad, a.imagen, a.precio, a.unidad, a.id_categoria, a.id_color, a.clave, a.descripcion');
 		$this->db->from('producto a');
 		$this->db->join('categoria b', 'a.id_categoria = b.id_categoria', 'INNER');
 		$query = $this->db->get();
@@ -70,6 +70,7 @@ class Producto_model extends CI_Model {
 		if($validaProducto['result']){
 			$this->db->where('id_producto',$id);
 			$this->db->delete('producto');
+			$result = array("result" => false, "error" => "El producto se eliminó correctamente");
 		}else{
 			$result = $validaProducto;
 		}
